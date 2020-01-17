@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+  ul{
+    list-style: none;
+  }
+  li{
+    display: block;
+  }
+  .active{
+    background: #0B78A0 ;
+    color:#FFFFFF;
+    padding: 5px;
+  }
+  </style>
+
+</head>
+<body>
+  <div id="root">
+    <ul>
+      <li v-for="(skill,i) in skills" v-show="skill.experience>=10">  
+       {{i+1}}{{skill.name}}{{skill.experience}}
+      </li>
+    </ul>
+  
+  </div>
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript">
+   var app = new Vue({
+      el:"#root",
+      data: {
+        skills :[
+          {name:'Rifat', experience:10},
+          {name:'Fahmin', experience:2},
+          {name:'Rayhan', experience:5},
+          {name:'Fahryad', experience:11},
+        ]
+      },
+     
+    })
+  </script>
+</body>
+</html>

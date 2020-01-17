@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+  ul{
+    list-style: none;
+  }
+  li{
+    display: inline;
+  }
+  .active{
+    background: #0B78A0 ;
+    color:#FFFFFF;
+    padding: 5px;
+  }
+  </style>
+
+</head>
+<body>
+  <div id="root">
+    <h1>All Payment</h1>
+    <ul>
+      <li v-for="(payment,i) in payments">  
+        <p>{{payment.name}}{{payment.amount}}</p>
+      </li>
+    </ul> 
+    <br><br><br>
+    <h1>UnPaid Amount</h1>
+    <ul>
+      <li v-for="(payment,i) in unpaidPayments">  
+        <p>{{payment.name}}{{payment.amount}}</p>
+      </li>
+    </ul>
+    <h1>Total : </h1><p>{{totalAmount}}</p>
+  </div>
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript">
+   var app = new Vue({
+      el:"#root",
+      data: {
+       payments :[
+         {name:'House rent',amount:15000,paid:true},
+         {name:'Electricity',amount:560,paid:false},
+         {name:'Gas',amount:560,paid:false},
+         {name:'Water',amount:560,paid:true},
+       ]
+      },
+     
+      computed : {
+        unpaidPayments: function(){
+          return this.payments.filter(function(p){
+          return  !p.paid;
+          });
+        },
+        totalAmount:function(){
+         var sum  = 0;
+         for(var i=0; i<this.payments.length; i++){
+           sum +=this.payments[i].amount;
+         }
+         return sum;
+        }
+      }
+     
+    })
+  </script>
+</body>
+</html>
